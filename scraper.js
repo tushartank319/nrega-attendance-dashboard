@@ -12,6 +12,7 @@ async function scrapeAttendance(dateVal, stateCode = '07', onProgress = () => {}
     onProgress({ step: 'init', message: 'Launching Chromium browser...' });
     browser = await puppeteer.launch({
       headless: true,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
